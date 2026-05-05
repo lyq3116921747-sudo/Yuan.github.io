@@ -2,31 +2,153 @@
 layout: default
 ---
 
-<main id="main-content" class="glass-panel content-panel post-panel">
-  <article class="post">
-    <header class="post-header">
-      <a class="text-link" href="{{ '/' | relative_url }}">返回首页</a>
-      <h1>{{ page.title }}</h1>
-      <div class="post-meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-        {% if page.categories.size > 0 %}
-          <span>{{ page.categories | join: " / " }}</span>
-        {% endif %}
-      </div>
-      {% if page.description %}
-        <p>{{ page.description }}</p>
-      {% endif %}
-      {% if page.tags.size > 0 %}
-        <div class="tag-row" aria-label="文章标签">
-          {% for tag in page.tags %}
-            <span>{{ tag }}</span>
-          {% endfor %}
+<div class="post-layout">
+  <main id="main-content" class="glass-panel content-panel post-panel">
+    <article class="post">
+      <header class="post-header">
+        <a class="text-link" href="{{ '/' | relative_url }}">返回首页</a>
+        <h1>{{ page.title }}</h1>
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+          {% if page.categories.size > 0 %}
+            <span>{{ page.categories | join: " / " }}</span>
+          {% endif %}
         </div>
-      {% endif %}
-    </header>
+        {% if page.description %}
+          <p>{{ page.description }}</p>
+        {% endif %}
+        {% if page.tags.size > 0 %}
+          <div class="tag-row" aria-label="文章标签">
+            {% for tag in page.tags %}
+              <span>{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </header>
 
-    <div class="post-content">
-      {{ content }}
+      <div class="post-content">
+        {{ content }}
+      </div>
+    </article>
+  </main>
+
+  <aside class="toc-sidebar" id="toc-sidebar">
+    <div class="toc-container">
+      <h3 class="toc-title">目录</h3>
+      <nav class="toc-nav" id="toc-nav">
+        <!-- 目录将由 JavaScript 生成 -->
+      </nav>
     </div>
-  </article>
-</main>
+  </aside>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.querySelector('.post-content');
+  const tocNav = document.getElementById('toc-nav');
+  const tocSidebar = document.getElementById('toc-sidebar');
+
+  if (!content || !tocNav) return;
+
+  // 获取所有标题
+  const headings = content.querySelectorAll('h2, h3, h4');
+
+  if (headings.length === 0) {
+    if (tocSidebar) {
+      tocSidebar.style.display = 'none';
+    }
+    return;
+  }
+
+  // 生成目录
+  let tocHTML = '<ul class="toc-list">';
+  let h2Count = 0;
+
+  headings.forEach((heading, index) => {
+    const level = parseInt(heading.tagName.charAt(1));
+    const text = heading.textContent.trim();
+    const id = `heading-${index}`;
+
+    // 为标题添加 ID
+    heading.id = id;
+
+    if (level === 2) {
+      if (h2Count > 0) {
+        tocHTML += '</ul></li>';
+      }
+      tocHTML += `<li class="toc-item toc-h2">
+        <a href="#${id}" class="toc-link">${text}</a>
+        <ul class="toc-sublist">`;
+      h2Count++;
+    } else if (level === 3) {
+      tocHTML += `<li class="toc-item toc-h3">
+        <a href="#${id}" class="toc-link">${text}</a>
+      </li>`;
+    } else if (level === 4) {
+      tocHTML += `<li class="toc-item toc-h4">
+        <a href="#${id}" class="toc-link">${text}</a>
+      </li>`;
+    }
+  });
+
+  if (h2Count > 0) {
+    tocHTML += '</ul></li>';
+  }
+  tocHTML += '</ul>';
+
+  tocNav.innerHTML = tocHTML;
+
+  // 平滑滚动
+  document.querySelectorAll('.toc-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // 更新 URL（可选）
+        history.pushState(null, null, `#${targetId}`);
+      }
+    });
+  });
+
+  // 滚动时高亮当前目录项
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        highlightCurrentHeading();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  function highlightCurrentHeading() {
+    const headings = document.querySelectorAll('.post-content h2, .post-content h3, .post-content h4');
+    const tocLinks = document.querySelectorAll('.toc-link');
+
+    let currentHeading = null;
+
+    headings.forEach(heading => {
+      const rect = heading.getBoundingClientRect();
+      if (rect.top <= 100) {
+        currentHeading = heading;
+      }
+    });
+
+    tocLinks.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (currentHeading && currentHeading.id === href) {
+        link.classList.add('active');
+      }
+    });
+  }
+});
+</script>

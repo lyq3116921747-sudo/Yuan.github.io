@@ -27,6 +27,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Better smooth scrolling for TOC links */
+html {
+  scroll-padding-top: 80px;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
@@ -67,6 +72,115 @@ body::after {
   z-index: 1;
   width: 100%;
   min-height: 100vh;
+}
+
+/* post layout with sidebar */
+.post-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.post-layout .content-panel {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+/* TOC sidebar */
+.toc-sidebar {
+  position: sticky;
+  top: 40px;
+  width: 250px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.toc-container {
+  background: var(--card-bg);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.toc-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: var(--text);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-sublist {
+  list-style: none;
+  padding-left: 16px;
+  margin: 8px 0 0 0;
+}
+
+.toc-item {
+  margin: 6px 0;
+}
+
+.toc-link {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.toc-h2 > .toc-link {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.toc-h3 > .toc-link {
+  font-size: 0.85rem;
+}
+
+.toc-h4 > .toc-link {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.toc-link:hover {
+  color: var(--accent);
+  background: rgba(159, 216, 255, 0.1);
+}
+
+.toc-link.active {
+  color: var(--accent);
+  background: rgba(159, 216, 255, 0.15);
+  font-weight: 600;
+}
+
+/* TOC scrollbar */
+.toc-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 2px;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
 a {
@@ -844,6 +958,24 @@ h3 {
   font-weight: 600;
 }
 
+/* 平板适配 */
+@media (max-width: 1024px) {
+  .post-layout {
+    flex-direction: column;
+  }
+
+  .toc-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    order: -1;
+  }
+
+  .toc-container {
+    margin-bottom: 20px;
+  }
+}
+
 /* 移动端适配 */
 @media (max-width: 768px) {
   .main-content {
@@ -880,5 +1012,10 @@ h3 {
 
   .rightone {
     grid-template-columns: 1fr;
+  }
+
+  /* Hide TOC sidebar on mobile */
+  .toc-sidebar {
+    display: none;
   }
 }
