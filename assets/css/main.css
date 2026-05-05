@@ -168,12 +168,16 @@ h3 {
 .profile-panel h1 {
   max-width: 8ch;
   margin-top: 10px;
-  font-size: clamp(3.1rem, 7vw, 5.8rem);
+  /* slightly smaller heading for a more refined look */
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 700;
 }
 
 .profile-text {
   max-width: 28rem;
-  font-size: 1.04rem;
+  /* slightly smaller text for better readability */
+  font-size: 0.98rem;
+  line-height: 1.65;
 }
 
 .site-nav,
@@ -193,21 +197,27 @@ h3 {
 .topic-list a,
 .topic-list span {
   min-height: 36px;
-  padding: 7px 12px;
+  padding: 8px 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  /* lighter, more subtle border */
   border: 1px solid var(--faint);
-  border-radius: 8px;
+  border-radius: 6px;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
+  /* even more translucent background */
+  background: rgba(159, 216, 255, 0.04);
+  font-size: 0.92rem;
+  transition: all 0.25s ease;
 }
 
 .site-nav a:hover,
 .social-links a:hover,
 .topic-list a:hover {
-  border-color: rgba(159, 216, 255, 0.65);
-  background: rgba(159, 216, 255, 0.16);
+  /* more accent-forward on hover */
+  border-color: rgba(159, 216, 255, 0.45);
+  background: rgba(159, 216, 255, 0.12);
+  color: var(--accent);
 }
 
 .profile-meta span {
@@ -231,7 +241,9 @@ h3 {
 .section-heading h2,
 .page-header h1,
 .post-header h1 {
-  font-size: clamp(2rem, 4vw, 3.3rem);
+  /* slightly smaller heading for refinement */
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
 }
 
 .post-list {
@@ -243,21 +255,25 @@ h3 {
 .topic-panel,
 .archive-item,
 .category-block {
-  border: 1px solid var(--faint);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  /* more subtle border for a lighter feel */
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  /* more translucent background */
+  background: rgba(159, 216, 255, 0.02);
+  transition: all 0.25s ease;
 }
 
 .post-preview {
-  padding: 20px;
+  padding: 18px;
   display: grid;
   gap: 10px;
 }
 
 .post-preview:hover,
 .archive-item:hover {
-  border-color: rgba(159, 216, 255, 0.48);
-  background: rgba(255, 255, 255, 0.12);
+  /* subtle highlight on hover */
+  border-color: rgba(159, 216, 255, 0.3);
+  background: rgba(159, 216, 255, 0.08);
 }
 
 .post-preview__meta,
@@ -275,18 +291,23 @@ h3 {
 }
 
 .post-preview h3 {
-  font-size: 1.35rem;
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .tag-row {
-  gap: 8px;
+  gap: 6px;
 }
 
 .tag-row span {
-  min-height: 28px;
+  min-height: 26px;
   padding: 3px 10px;
-  color: rgba(248, 250, 252, 0.82);
-  font-size: 0.86rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  background: rgba(159, 216, 255, 0.05);
+  border: 1px solid rgba(159, 216, 255, 0.15);
+  color: rgba(248, 250, 252, 0.75);
 }
 
 .topic-panel {
@@ -355,18 +376,20 @@ h3 {
 .page-body code,
 .post-content code {
   padding: 0.12rem 0.34rem;
-  border-radius: 6px;
+  border-radius: 5px;
   color: #fef3c7;
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(15, 23, 42, 0.6);
+  font-size: 0.9em;
 }
 
 .page-body pre,
 .post-content pre {
   overflow-x: auto;
-  padding: 16px;
-  border: 1px solid var(--faint);
-  border-radius: 8px;
-  background: rgba(15, 23, 42, 0.78);
+  padding: 14px;
+  border: 1px solid rgba(159, 216, 255, 0.15);
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.7);
+  line-height: 1.5;
 }
 
 .page-body pre code,
