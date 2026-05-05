@@ -1,0 +1,37 @@
+---
+layout: page
+title: 文章归档
+description: "按时间和分类整理所有文章。"
+permalink: /archive/
+---
+
+{% if site.posts.size > 0 %}
+  <section class="archive-section" aria-label="时间线">
+    {% for post in site.posts %}
+      <article class="archive-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+        <div>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          {% if post.description %}
+            <p>{{ post.description }}</p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+
+  <section class="archive-section" aria-label="分类">
+    <h2>分类</h2>
+    {% assign categories = site.categories | sort %}
+    {% for category in categories %}
+      <div class="category-block" id="category-{{ category[0] | slugify }}">
+        <h3>{{ category[0] }}</h3>
+        {% for post in category[1] %}
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </section>
+{% else %}
+  <p>还没有文章。新建 `_posts/YYYY-MM-DD-title.md` 后，Jekyll 会自动把它加入归档。</p>
+{% endif %}

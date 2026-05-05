@@ -1,34 +1,39 @@
-# Yuan.github.io
+# Yuan Blog
 
-This fork is published with GitHub Pages.
+这是一个基于 Jekyll 的个人技术博客，部署在 GitHub Pages。
 
 Live site:
 https://lyq3116921747-sudo.github.io/Yuan.github.io/
 
-The repository is a static site. Changes pushed to `main` are deployed by the workflow in `.github/workflows/pages.yml`.
+## 写文章
 
+在 `_posts` 目录中新建 Markdown 文件，文件名格式为：
+
+```text
+YYYY-MM-DD-title.md
+```
+
+文章开头需要包含 front matter：
+
+```yaml
 ---
+title: 文章标题
+date: 2026-05-05 12:00:00 +0800
+categories: [技术]
+tags: [Jekyll, Blog]
+description: 一句话概括这篇文章。
+---
+```
 
-# Original README
+提交到 `main` 分支后，GitHub Pages workflow 会自动构建并发布。
 
-# [hsBUPT.github.io]()
+## 本地预览
 
------------------------------------------------------------------------------------------------
+如果本机已安装 Ruby 和 Bundler：
 
-## This project is adapted from GitHub imsyy's home. You can fork it to your own repository and name it `username.github.io`, then run it!
+```powershell
+bundle install
+bundle exec jekyll serve
+```
 
-### update log
-
-#### Ver 1.1
-
-**Search boxes and styles have been added to the original author, ~~and click events and search engines will be added later.~~** **Join the search engine and optimize the search experience.Join the search engine and optimize the search experience.**
-
-![search-btn](https://img1.imgtp.com/2023/06/03/7iz95ogk.png)
-
-![search-line](https://img1.imgtp.com/2023/06/03/bG5fqM9L.png)
-
-### Tips
-
-**After I add the search engine, You can set this Demo as the browser home page through the edge Settings.**
-
-![](https://img1.imgtp.com/2023/06/03/GSytnrP1.png)
+站点默认使用 `img/background1.webp` 作为全屏背景图，请不要重复复制这个大文件。

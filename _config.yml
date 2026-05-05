@@ -1,0 +1,28 @@
+title: Yuan Blog
+author: Yuan
+email:
+description: "记录技术学习、项目实践与日常思考。"
+lang: zh-CN
+timezone: Asia/Shanghai
+
+url: "https://lyq3116921747-sudo.github.io"
+baseurl: "/Yuan.github.io"
+
+permalink: /posts/:title/
+markdown: kramdown
+highlighter: rouge
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Yuan
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - vercel.json
