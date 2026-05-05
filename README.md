@@ -1,3 +1,16 @@
+# Yuan.github.io
+
+This fork is published with GitHub Pages.
+
+Live site:
+https://lyq3116921747-sudo.github.io/Yuan.github.io/
+
+The repository is a static site. Changes pushed to `main` are deployed by the workflow in `.github/workflows/pages.yml`.
+
+---
+
+# Original README
+
 # [hsBUPT.github.io]()
 
 -----------------------------------------------------------------------------------------------
