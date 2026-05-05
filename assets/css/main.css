@@ -4,16 +4,16 @@
 :root {
   --bg-image: url("{{ '/img/background1.webp' | relative_url }}");
   --text: #f8fafc;
-  --muted: rgba(248, 250, 252, 0.78);
-  --faint: rgba(248, 250, 252, 0.10);
-  /* make frosted glass more translucent for a lighter, airy look */
-  --glass: rgba(15, 23, 42, 0.22);
-  --glass-strong: rgba(15, 23, 42, 0.36);
-  --line: rgba(255, 255, 255, 0.12);
+  --muted: rgba(248, 250, 252, 0.85);
+  --faint: rgba(248, 250, 252, 0.08);
+  /* solid card colors instead of translucent glass */
+  --card-bg: #1a2847;
+  --card-border: #2a3a5a;
+  --line: rgba(255, 255, 255, 0.08);
   --accent: #9fd8ff;
   --accent-strong: #f7d774;
-  /* softer, shorter shadow like imsyy */
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  /* softer shadow for solid cards */
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   color-scheme: dark;
 }
 
@@ -122,14 +122,12 @@ h3 {
 }
 
 .glass-panel {
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-border);
   border-radius: 8px;
-  /* more translucent gradient to reveal the background */
-  background: linear-gradient(135deg, var(--glass), rgba(15, 23, 42, 0.08));
+  /* solid card background instead of translucent glass */
+  background: var(--card-bg);
   box-shadow: var(--shadow);
-  /* slightly stronger blur for a thicker frosting feel */
-  backdrop-filter: blur(28px) saturate(1.08);
-  -webkit-backdrop-filter: blur(28px) saturate(1.08);
+  /* no backdrop filter anymore */
 }
 
 .profile-panel,
@@ -201,12 +199,10 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* lighter, more subtle border */
-  border: 1px solid var(--faint);
+  border: 1px solid var(--card-border);
   border-radius: 6px;
   color: var(--text);
-  /* even more translucent background */
-  background: rgba(159, 216, 255, 0.04);
+  background: rgba(42, 58, 90, 0.6);
   font-size: 0.92rem;
   transition: all 0.25s ease;
 }
@@ -214,9 +210,8 @@ h3 {
 .site-nav a:hover,
 .social-links a:hover,
 .topic-list a:hover {
-  /* more accent-forward on hover */
-  border-color: rgba(159, 216, 255, 0.45);
-  background: rgba(159, 216, 255, 0.12);
+  border-color: var(--accent);
+  background: rgba(159, 216, 255, 0.15);
   color: var(--accent);
 }
 
@@ -255,11 +250,10 @@ h3 {
 .topic-panel,
 .archive-item,
 .category-block {
-  /* more subtle border for a lighter feel */
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  /* solid card style without transparency */
+  border: 1px solid var(--card-border);
   border-radius: 6px;
-  /* more translucent background */
-  background: rgba(159, 216, 255, 0.02);
+  background: rgba(26, 40, 71, 0.5);
   transition: all 0.25s ease;
 }
 
@@ -271,9 +265,9 @@ h3 {
 
 .post-preview:hover,
 .archive-item:hover {
-  /* subtle highlight on hover */
-  border-color: rgba(159, 216, 255, 0.3);
-  background: rgba(159, 216, 255, 0.08);
+  /* solid highlight on hover */
+  border-color: var(--accent);
+  background: rgba(42, 58, 90, 0.8);
 }
 
 .post-preview__meta,
@@ -302,12 +296,12 @@ h3 {
 
 .tag-row span {
   min-height: 26px;
-  padding: 3px 10px;
+  padding: 4px 10px;
   font-size: 0.8rem;
   border-radius: 5px;
-  background: rgba(159, 216, 255, 0.05);
-  border: 1px solid rgba(159, 216, 255, 0.15);
-  color: rgba(248, 250, 252, 0.75);
+  background: rgba(42, 58, 90, 0.5);
+  border: 1px solid var(--card-border);
+  color: rgba(248, 250, 252, 0.8);
 }
 
 .topic-panel {
@@ -378,7 +372,7 @@ h3 {
   padding: 0.12rem 0.34rem;
   border-radius: 5px;
   color: #fef3c7;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.8);
   font-size: 0.9em;
 }
 
@@ -386,9 +380,9 @@ h3 {
 .post-content pre {
   overflow-x: auto;
   padding: 14px;
-  border: 1px solid rgba(159, 216, 255, 0.15);
+  border: 1px solid var(--card-border);
   border-radius: 6px;
-  background: rgba(15, 23, 42, 0.7);
+  background: rgba(15, 23, 42, 0.9);
   line-height: 1.5;
 }
 
