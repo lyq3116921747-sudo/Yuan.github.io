@@ -550,6 +550,31 @@ h3 {
   border-bottom: 1px solid rgba(159, 216, 255, 0.35);
 }
 
+/* 图片样式 */
+.page-body img,
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 20px 0;
+  display: block;
+}
+
+/* 图片居中容器 */
+.page-body p:has(img),
+.post-content p:has(img) {
+  text-align: center;
+}
+
+/* 图片说明文字 */
+.page-body p[style*="color: #888"],
+.post-content p[style*="color: #888"] {
+  text-align: center;
+  font-size: 0.9em;
+  margin-top: 8px;
+  color: var(--muted) !important;
+}
+
 .page-body ul,
 .post-content ul,
 .page-body ol,

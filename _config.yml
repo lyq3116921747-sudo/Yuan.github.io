@@ -19,6 +19,10 @@ defaults:
     values:
       layout: post
       author: Yuan
+  - scope:
+      path: "img/posts"
+    values:
+      image: true
 
 exclude:
   - Gemfile
