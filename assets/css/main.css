@@ -78,28 +78,36 @@ body::after {
 .post-layout {
   position: relative;
   z-index: 1;
-  display: flex;
-  gap: 32px;
   max-width: 1400px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-.post-layout .content-panel {
-  flex: 1;
-  min-width: 0;
-  margin: 0;
-}
-
 /* TOC sidebar */
 .toc-sidebar {
-  position: sticky;
+  position: fixed;
   top: 40px;
+  left: calc(50% - 450px);
   width: 250px;
-  flex-shrink: 0;
-  align-self: flex-start;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
+  z-index: 10;
+}
+
+.post-layout .content-panel {
+  margin-left: 270px;
+  margin-right: auto;
+}
+
+/* 确保在超大屏幕上目录不会太靠左 */
+@media (min-width: 1600px) {
+  .toc-sidebar {
+    left: calc(50% - 650px);
+  }
+
+  .post-layout .content-panel {
+    margin-left: 270px;
+  }
 }
 
 .toc-container {
@@ -960,19 +968,15 @@ h3 {
 
 /* 平板适配 */
 @media (max-width: 1024px) {
-  .post-layout {
-    flex-direction: column;
-  }
-
   .toc-sidebar {
-    width: 100%;
     position: static;
+    width: 100%;
     max-height: none;
-    order: -1;
+    margin-bottom: 20px;
   }
 
-  .toc-container {
-    margin-bottom: 20px;
+  .post-layout .content-panel {
+    margin-left: 0;
   }
 }
 
@@ -1017,5 +1021,9 @@ h3 {
   /* Hide TOC sidebar on mobile */
   .toc-sidebar {
     display: none;
+  }
+
+  .post-layout .content-panel {
+    margin-left: 0;
   }
 }
