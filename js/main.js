@@ -6,13 +6,6 @@ GitHub：https://github.com/imsyy/home
 */
 
 //弹窗样式
-if (!window.iziToast) {
-  window.iziToast = {
-    settings: function () {},
-    show: function () {},
-  };
-}
-
 iziToast.settings({
   timeout: 10000,
   progressBar: false,
@@ -49,48 +42,37 @@ body.addEventListener("mousemove", (e) => {
   });
 });
 
-function revealPage() {
-  const loadingBox = document.getElementById("loading-box");
-  const section = document.getElementById("section");
+//加载完成后执行
+function finishLoading() {
+  $("#loading-box").attr("class", "loaded");
+  $("#section").css(
+    "cssText",
+    "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important"
+  );
+}
 
-  if (loadingBox) {
-    loadingBox.className = "loaded";
-  }
+const loadingFallback = setTimeout(finishLoading, 5000);
 
-  if (section) {
-    section.style.cssText =
-      "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important";
-  }
-
-  if (window.jQuery) {
+window.addEventListener(
+  "load",
+  function () {
+    clearTimeout(loadingFallback);
+    //载入动画
+    finishLoading();
     $("#bg").css(
       "cssText",
       "transform: scale(1);filter: blur(0px);transition: ease 1.5s;"
     );
     $(".cover").css("cssText", "opacity: 1;transition: ease 1.5s;");
-  }
-}
-
-// Do not let slow third-party CDNs or media keep the loading cover on screen.
-const loadingFallback = setTimeout(revealPage, 3500);
-
-//加载完成后执行
-window.addEventListener(
-  "load",
-  function () {
-    clearTimeout(loadingFallback);
-    revealPage();
 
     //用户欢迎
     setTimeout(function () {
-      if (window.iziToast) {
-        iziToast.show({
-          timeout: 2500,
-          icon: false,
-          title: hello,
-          message: "欢迎来到我的主页",
-        });
-      }
+      iziToast.show({
+        timeout: 2500,
+        icon: false,
+        title: hello,
+        message: "欢迎来到我的主页",
+      });
     }, 800);
 
     //延迟加载音乐播放器
@@ -492,10 +474,10 @@ let title1 = "無名の主页";
 let title2 = `
  _____ __  __  _______     ____     __
 |_   _|  \\/  |/ ____\\ \\   / /\\ \\   / /
-  | | | \\  / | (___  \\ \\_/ /  \\ \\_/ / 
-  | | | |\\/| |\\___ \\  \\   /    \\   /  
- _| |_| |  | |____) |  | |      | |   
-|_____|_|  |_|_____/   |_|      |_|                                                     
+  | | | \\  / | (___  \\ \\_/ /  \\ \\_/ /
+  | | | |\\/| |\\___ \\  \\   /    \\   /
+ _| |_| |  | |____) |  | |      | |
+|_____|_|  |_|_____/   |_|      |_|
 `;
 let content = `
 版 本 号：3.4
