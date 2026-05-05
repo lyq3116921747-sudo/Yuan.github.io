@@ -6,6 +6,13 @@ GitHub：https://github.com/imsyy/home
 */
 
 //弹窗样式
+if (!window.iziToast) {
+  window.iziToast = {
+    settings: function () {},
+    show: function () {},
+  };
+}
+
 iziToast.settings({
   timeout: 10000,
   progressBar: false,
@@ -42,30 +49,48 @@ body.addEventListener("mousemove", (e) => {
   });
 });
 
-//加载完成后执行
-window.addEventListener(
-  "load",
-  function () {
-    //载入动画
-    $("#loading-box").attr("class", "loaded");
+function revealPage() {
+  const loadingBox = document.getElementById("loading-box");
+  const section = document.getElementById("section");
+
+  if (loadingBox) {
+    loadingBox.className = "loaded";
+  }
+
+  if (section) {
+    section.style.cssText =
+      "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important";
+  }
+
+  if (window.jQuery) {
     $("#bg").css(
       "cssText",
       "transform: scale(1);filter: blur(0px);transition: ease 1.5s;"
     );
     $(".cover").css("cssText", "opacity: 1;transition: ease 1.5s;");
-    $("#section").css(
-      "cssText",
-      "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important"
-    );
+  }
+}
+
+// Do not let slow third-party CDNs or media keep the loading cover on screen.
+const loadingFallback = setTimeout(revealPage, 3500);
+
+//加载完成后执行
+window.addEventListener(
+  "load",
+  function () {
+    clearTimeout(loadingFallback);
+    revealPage();
 
     //用户欢迎
     setTimeout(function () {
-      iziToast.show({
-        timeout: 2500,
-        icon: false,
-        title: hello,
-        message: "欢迎来到我的主页",
-      });
+      if (window.iziToast) {
+        iziToast.show({
+          timeout: 2500,
+          icon: false,
+          title: hello,
+          message: "欢迎来到我的主页",
+        });
+      }
     }, 800);
 
     //延迟加载音乐播放器

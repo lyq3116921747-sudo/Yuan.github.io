@@ -18,6 +18,9 @@
     <title>南淮花酱|MyIndex</title>
     <!-- jQuery -->
     <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"><\/script>');
+    </script>
     <!-- HarmonyOS Sans -->
     <!-- 本站 CDN 已开启防盗链，非本站域名不可访问，请更改链接为下方内容，否则自定义字体将失效 -->
     <!-- https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css -->
@@ -48,6 +51,20 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/aplayer/1.10.1/APlayer.min.js" crossorigin="anonymous"
         referrerpolicy="no-referrer"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                var loadingBox = document.getElementById("loading-box");
+                var section = document.getElementById("section");
+                if (loadingBox) {
+                    loadingBox.className = "loaded";
+                }
+                if (section) {
+                    section.style.cssText = "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important";
+                }
+            }, 4500);
+        });
+    </script>
     <!-- <script src="./js/Meting.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <!-- IE Out -->
     <script>
@@ -55,7 +72,7 @@
             "/upgrade-your-browser/index.html?referrer=" + encodeURIComponent(window.location.href);
     </script>
     <!-- PWA -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <!-- 51.LA 统计 -->
     <script src="./js/51LA.js"></script>
 </head>
@@ -564,7 +581,7 @@
     <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", function () {
-                navigator.serviceWorker.register("sw.js");
+                navigator.serviceWorker.register("./sw.js");
             });
         }
     </script>
