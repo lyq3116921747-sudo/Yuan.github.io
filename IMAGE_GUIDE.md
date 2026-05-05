@@ -22,9 +22,15 @@ mkdir -p img/posts
 - 使用英文文件名和连字符
 
 ### ✅ 第三步：在文章中引用图片
-在 Markdown 文件中使用绝对路径：
+**重要：** 由于设置了 `baseurl: "/Yuan.github.io"`，必须使用 Jekyll 的 `relative_url` 过滤器：
+
 ```markdown
-![图片描述](/img/posts/your-image.jpg)
+![图片描述]({{ '/img/posts/your-image.jpg' | relative_url }})
+```
+
+**不要使用：**
+```markdown
+![图片描述](/img/posts/your-image.jpg)  # ❌ 会在 GitHub Pages 上失效
 ```
 
 ### ✅ 第四步：配置 Jekyll
@@ -52,7 +58,12 @@ defaults:
 
 ### 标准图片插入
 ```markdown
-![描述](/img/posts/screenshot-2024-05-06.png)
+![描述]({{ '/img/posts/screenshot-2024-05-06.png' | relative_url }})
+```
+
+**或者使用 HTML：**
+```html
+<img src="{{ '/img/posts/screenshot-2024-05-06.png' | relative_url }}" alt="描述">
 ```
 
 ### 带尺寸的图片

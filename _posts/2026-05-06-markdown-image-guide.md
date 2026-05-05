@@ -14,14 +14,21 @@ description: 详细介绍在 Jekyll 博客中插入图片的各种方法。
 将图片文件放到 `img/posts/` 目录下。
 
 ### 2. 在文章中引用
+**重要：** 由于设置了 `baseurl`，必须使用 `relative_url` 过滤器：
+
 ```markdown
-![图片描述](/img/posts/your-image.jpg)
+![图片描述]({{ '/img/posts/your-image.jpg' | relative_url }})
 ```
 
 ### 3. 示例代码块
 ```markdown
-![风景图片](/img/posts/screenshot-2024-05-06.png)
+![风景图片]({{ '/img/posts/screenshot-2024-05-06.png' | relative_url }})
 ```
+
+**为什么需要 `relative_url`？**
+- 你的博客设置了 `baseurl: "/Yuan.github.io"`
+- 直接使用 `/img/posts/...` 会导致路径错误
+- `relative_url` 会自动添加正确的 baseurl 前缀
 
 ## 方法二：外部图片链接
 

@@ -20,12 +20,12 @@ ssh -p 12345 -R 1080:127.0.0.1:7897 sysu_zhangy_1@701056.proxy.nscc-gz.cn
 **远程服务器 → 自己1080端口 → 你的本地7897端口。**
 
 ## 本地的配置和远程的配置
-我们知道了这条指令最后会把网络请求转发到我们本地的7897端口，那么我们需要保证自己的**本地代理**运行在7897端口。（我用的是clash如下）![alt text](/img/posts/2026-05-05/image.png)
+我们知道了这条指令最后会把网络请求转发到我们本地的7897端口，那么我们需要保证自己的**本地代理**运行在7897端口。（我用的是clash如下）![alt text]({{ '/img/posts/2026-05-05/image.png' | relative_url }})
 
 然后对于**远程主机**，如果想使用AI工具，我们需要在SSH相关设置中设置远程主机的代理端口为我们之前指令中的`1080`。
 设置方式如下：
 在vscode的设置中搜索`ssh`,找到下面的两项：
-![alt text](/img/posts/2026-05-05/image2.png)
+![alt text]({{ '/img/posts/2026-05-05/image2.png' | relative_url }})
 然后设置远程主机的代理为自环地址，端口为1080：
-![alt text](/img/posts/2026-05-05/image3.png)
+![alt text]({{ '/img/posts/2026-05-05/image3.png' | relative_url }})
 
