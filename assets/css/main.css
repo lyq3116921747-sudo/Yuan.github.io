@@ -138,9 +138,8 @@ h3 {
 .glass-panel {
   border: none;
   border-radius: 6px;
-  /* glassmorphism style like hsBUPT */
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* transparent background */
+  background: transparent;
   box-shadow: none;
 }
 
@@ -156,9 +155,8 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
   gap: 28px;
-  /* glassmorphism message card style */
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* transparent background */
+  background: transparent;
 }
 
 /* responsive: reduce gap and stack columns on narrow screens */
@@ -264,9 +262,8 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* glassmorphism style consistency */
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* transparent background */
+  background: transparent;
 }
 
 .section-heading,
