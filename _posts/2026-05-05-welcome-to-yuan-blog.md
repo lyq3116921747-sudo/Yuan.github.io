@@ -28,26 +28,4 @@ ssh -p 12345 -R 1080:127.0.0.1:7897 sysu_zhangy_1@701056.proxy.nscc-gz.cn
 ![alt text](2026-05-05/image2.png)
 然后设置远程主机的代理为自环地址，端口为1080：
 ![alt text](2026-05-05/image3.png)
-<!-- ## 如何新增文章
 
-在 `_posts` 目录中新建一个 Markdown 文件，文件名格式为：
-
-```text
-YYYY-MM-DD-title.md
-```
-
-然后在文件开头写入 front matter：
-
-```yaml
----
-title: 我的新文章
-date: 2026-05-05 20:00:00 +0800
-categories: [超算那点事儿]
-tags: [记录, 实践]
-description: 这是一句话摘要。
----
-```
-
-提交到 `main` 分支后，GitHub Pages 会自动构建并发布。
-## title test
-## QAQ -->
