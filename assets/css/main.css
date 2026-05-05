@@ -6,14 +6,13 @@
   --text: #f8fafc;
   --muted: rgba(248, 250, 252, 0.85);
   --faint: rgba(248, 250, 252, 0.08);
-  /* glassmorphism card style like hsBUPT */
-  --card-bg: rgb(0 0 0 / 25%);
-  --card-bg-hover: rgb(0 0 0 / 40%);
+  /* solid card colors instead of glassmorphism */
+  --card-bg: #1a2847;
+  --card-bg-hover: #2a3a5a;
   --card-border: transparent;
   --line: rgba(255, 255, 255, 0.08);
   --accent: #9fd8ff;
   --accent-strong: #f7d774;
-  /* no shadow for glassmorphism */
   --shadow: none;
   color-scheme: dark;
 }
@@ -218,7 +217,7 @@ h3 {
   border-radius: 6px;
   color: var(--text);
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   font-size: 0.92rem;
   transition: all 0.5s ease;
 }
@@ -294,7 +293,7 @@ h3 {
   border: none;
   border-radius: 6px;
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   transition: all 0.5s ease;
 }
 
@@ -350,7 +349,7 @@ h3 {
   font-size: 0.8rem;
   border-radius: 5px;
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   border: none;
   color: rgba(248, 250, 252, 0.8);
 }
@@ -363,7 +362,7 @@ h3 {
   gap: 18px;
   /* glassmorphism style */
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   transition: all 0.5s ease;
 }
 
@@ -447,7 +446,7 @@ h3 {
   border: none;
   border-radius: 6px;
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   line-height: 1.5;
 }
 
@@ -526,7 +525,7 @@ h3 {
   padding: 20px;
   border: none;
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   border-radius: 6px;
 }
 
@@ -681,7 +680,7 @@ h3 {
 /* 简介卡片 */
 .message {
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   padding: 1.5rem;
   border-radius: 6px;
   cursor: pointer;
@@ -729,7 +728,7 @@ h3 {
   justify-content: center;
   border-radius: 6px;
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   transition: all 0.5s;
   font-size: 1.45rem;
 }
@@ -785,7 +784,7 @@ h3 {
   height: 100px;
   border-radius: 6px;
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter removed */
   display: flex;
   align-items: center;
   justify-content: center;
