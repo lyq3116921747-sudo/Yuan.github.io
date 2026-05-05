@@ -4,99 +4,109 @@ title: 首页
 description: "Yuan Blog 的最新文章、分类与个人介绍。"
 ---
 
-<div class="main-container">
-  <!-- 头像和名字 -->
-  <div class="main-img">
-    <img src="{{ '/img/avatar.jpg' | relative_url }}" alt="头像" onerror="this.src='https://picsum.photos/120/120'">
-    <div class="img-title">
-      <div class="img-title-big">{{ site.title }}</div>
-      <span class="img-text">{{ site.description }}</span>
-    </div>
-  </div>
-
-  <!-- 简介卡片 -->
-  <div class="message">
-    <div class="des">
-      <div class="des-title">
-        <span id="change">Hello World!</span>
-        <p>一个技术博客 | 记录学习与成长</p>
-      </div>
-      <i class="fa-solid fa-quote-right"></i>
-    </div>
-  </div>
-
-  <!-- 社交链接 -->
-  <div class="social">
-    <a href="https://github.com/lyq3116921747-sudo" class="link" target="_blank" title="GitHub">
-      <i class="fa-brands fa-github"></i>
-    </a>
-    <a href="{{ '/archive/' | relative_url }}" class="link" title="文章归档">
-      <i class="fa-solid fa-archive"></i>
-    </a>
-    <a href="{{ '/about/' | relative_url }}" class="link" title="关于我">
-      <i class="fa-solid fa-user"></i>
-    </a>
-  </div>
-
-  <!-- 分割线 -->
-  <div class="line">
-    <i class="fa-solid fa-link"></i>
-    <span class="line-text">网站列表</span>
-    <i class="fa-solid fa-link"></i>
-  </div>
-
-  <!-- 链接卡片 - 主要功能 -->
-  <div class="row">
-    <div class="col">
-      <a href="{{ '/archive/' | relative_url }}" class="link-card">
-        <i class="fa-solid fa-file-lines"></i>
-        <span class="link-name">文章归档</span>
-      </a>
-    </div>
-    <div class="col">
-      <a href="{{ '/about/' | relative_url }}" class="link-card">
-        <i class="fa-solid fa-user"></i>
-        <span class="link-name">关于我</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- 最新文章列表 -->
-  <div class="line" style="margin-top: 2rem;">
-    <i class="fa-solid fa-newspaper"></i>
-    <span class="line-text">最新文章</span>
-  </div>
-
-  <div class="article-list">
-    {% if site.posts.size > 0 %}
-      {% for post in site.posts limit: 6 %}
-        <a href="{{ post.url | relative_url }}" class="link-card article-card">
-          <div class="article-info">
-            <span class="article-title">{{ post.title }}</span>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+<main class="main-content">
+  <div class="container">
+    <div class="row">
+      <!-- 左侧：个人资料 -->
+      <div class="col main-left">
+        <!-- 头像和名字 -->
+        <div class="main-img">
+          <img src="{{ '/img/avatar.jpg' | relative_url }}" alt="头像" onerror="this.src='https://picsum.photos/120/120'">
+          <div class="img-title">
+            <div class="img-title-big">{{ site.title }}</div>
+            <span class="img-text">.io</span>
           </div>
-          <i class="fa-solid fa-chevron-right"></i>
-        </a>
-      {% endfor %}
-    {% else %}
-      <div class="empty-state">还没有文章。新建 `_posts/YYYY-MM-DD-title.md` 后，这里会自动显示。</div>
-    {% endif %}
+        </div>
+
+        <!-- 简介卡片 -->
+        <div class="message">
+          <div class="des">
+            <div class="des-title">
+              <span id="change">Hello World !</span>
+              <p>一个技术博客 | 记录学习与成长</p>
+            </div>
+            <i class="fa-solid fa-quote-right"></i>
+          </div>
+        </div>
+
+        <!-- 社交链接 -->
+        <div class="social">
+          <a href="https://github.com/lyq3116921747-sudo" class="link" target="_blank">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="{{ '/archive/' | relative_url }}" class="link">
+            <i class="fa-solid fa-archive"></i>
+          </a>
+          <a href="{{ '/about/' | relative_url }}" class="link">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 右侧：功能卡片 -->
+      <div class="col main-right">
+        <!-- 最新文章列表 -->
+        <div class="line">
+          <i class="fa-solid fa-newspaper"></i>
+          <span class="line-text">最新文章</span>
+        </div>
+
+        <div class="row rightone">
+          {% if site.posts.size > 0 %}
+            {% for post in site.posts limit: 4 %}
+              <div class="col">
+                <a href="{{ post.url | relative_url }}" class="link-card">
+                  <i class="fa-solid fa-file-lines"></i>
+                  <span class="link-name">{{ post.title }}</span>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="empty-state">还没有文章</div>
+          {% endif %}
+        </div>
+
+        <!-- 快速导航 -->
+        <div class="line" style="margin-top: 2rem;">
+          <i class="fa-solid fa-link"></i>
+          <span class="line-text">快速导航</span>
+        </div>
+
+        <div class="row rightone">
+          <div class="col">
+            <a href="{{ '/archive/' | relative_url }}" class="link-card">
+              <i class="fa-solid fa-archive"></i>
+              <span class="link-name">文章归档</span>
+            </a>
+          </div>
+          <div class="col">
+            <a href="{{ '/about/' | relative_url }}" class="link-card">
+              <i class="fa-solid fa-user"></i>
+              <span class="link-name">关于我</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 分类标签 -->
+        {% if site.categories.size > 0 %}
+          <div class="line" style="margin-top: 2rem;">
+            <i class="fa-solid fa-tags"></i>
+            <span class="line-text">分类标签</span>
+          </div>
+
+          <div class="row rightone">
+            {% assign categories = site.categories | sort %}
+            {% for category in categories limit: 4 %}
+              <div class="col">
+                <a href="{{ '/archive/' | relative_url }}#category-{{ category[0] | slugify }}" class="link-card">
+                  <i class="fa-solid fa-tag"></i>
+                  <span class="link-name">{{ category[0] }}</span>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
-
-  <!-- 分类标签 -->
-  {% if site.categories.size > 0 %}
-    <div class="line" style="margin-top: 2rem;">
-      <i class="fa-solid fa-tags"></i>
-      <span class="line-text">分类标签</span>
-    </div>
-
-    <div class="tag-cloud">
-      {% assign categories = site.categories | sort %}
-      {% for category in categories %}
-        <a href="{{ '/archive/' | relative_url }}#category-{{ category[0] | slugify }}" class="tag-item">
-          {{ category[0] }}
-        </a>
-      {% endfor %}
-    </div>
-  {% endif %}
-</div>
+</main>
