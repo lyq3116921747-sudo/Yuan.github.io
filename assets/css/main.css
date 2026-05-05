@@ -6,9 +6,9 @@
   --text: #f8fafc;
   --muted: rgba(248, 250, 252, 0.85);
   --faint: rgba(248, 250, 252, 0.08);
-  /* solid card colors instead of glassmorphism */
-  --card-bg: #1a2847;
-  --card-bg-hover: #2a3a5a;
+  /* hsBUPT style: semi-transparent black cards */
+  --card-bg: rgb(0 0 0 / 25%);
+  --card-bg-hover: rgb(0 0 0 / 40%);
   --card-border: transparent;
   --line: rgba(255, 255, 255, 0.08);
   --accent: #9fd8ff;
