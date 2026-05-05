@@ -63,9 +63,7 @@ body::after {
     radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
 }
 
-.page-backdrop {
-  backdrop-filter: saturate(1.06);
-}
+/* page backdrop removed to keep background clear */
 
 a {
   color: inherit;
