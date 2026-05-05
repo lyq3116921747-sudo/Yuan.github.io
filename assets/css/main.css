@@ -44,9 +44,7 @@ body::before {
   z-index: 0;
   content: "";
   background: var(--bg-image) center / cover no-repeat;
-  /* hsBUPT style: blur and scale background */
-  filter: blur(10px);
-  transform: scale(1.1);
+  /* clear background */
 }
 
 body::after,
@@ -124,11 +122,9 @@ h3 {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    filter: blur(10px);
   }
   to {
     opacity: 1;
-    filter: blur(0);
   }
 }
 
