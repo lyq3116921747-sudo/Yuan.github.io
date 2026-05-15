@@ -3,7 +3,7 @@ title: 超算访问外网
 date: 2026-05-05 12:00:00 +0800
 categories: [超算那点事儿]
 tags: [Jekyll, GitHub Pages, Markdown]
-description: 第一篇示例文章，用来验证 Markdown 写作、分类、标签和文章页样式。
+description: 如果想在超算上用codex或者claude code，可以参考这篇文章
 ---
 
 我们可能有在超算上vibe coding 的需求，由于超算的网络无法连接外网，`module load proxy` 之后，代理服务器也只能访问内网，github连接也不稳定。这里记录了一下解决方法。（以上方法理论上可以推广到其他不能连接外网的服务器）
